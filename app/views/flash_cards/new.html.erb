@@ -1,0 +1,37 @@
+<h2>Create a new Flash Card</h2>
+<%= form_with scope: :flash_card, loca: true, url: user_flash_cards_path do |form| %>
+
+  <% if @flash_card.errors.any? %>
+    <h2>
+      <%= pluralize(@flash_card.errors.count, "error") %> prohibted
+      this article from being saved:
+    </h2>
+
+    <ul>
+      <% @flash_card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </p>
+
+  <p>
+    <%= form.label :question %>
+    <%= form.text_field :question %>
+  </p>
+
+  <p>
+    <%= form.label :answer %>
+    <%= form.text_field :answer %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <%= link_to 'Back', user_flash_cards_path %>
+<% end %>
