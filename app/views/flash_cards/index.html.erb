@@ -1,3 +1,13 @@
 <h1>Flash Cards</h1>
 
 <%= link_to "Create new Flash Card", new_user_flash_card_path %>
+
+<p>
+  <ul>
+    <% @flash_cards.each do |card| %>
+      <li>
+        <%= link_to card.question, user_flash_card_path(current_user, card) %>
+      </li>
+    <% end %>
+  </ul>
+</p>

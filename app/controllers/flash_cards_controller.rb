@@ -1,5 +1,6 @@
 class FlashCardsController < ApplicationController
   def index
+    @flash_cards = FlashCard.all
   end
 
   def new
@@ -19,6 +20,10 @@ class FlashCardsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def show
+    @flash_card = FlashCard.find(params[:id])
   end
 
   private
