@@ -1,5 +1,5 @@
 <h2>Create a new Flash Card</h2>
-<%= form_with scope: :flash_card, loca: true, url: user_flash_cards_path do |form| %>
+<%= form_with scope: :flash_card, local: true, url: user_flash_cards_path do |form| %>
 
   <% if @flash_card.errors.any? %>
     <h2>

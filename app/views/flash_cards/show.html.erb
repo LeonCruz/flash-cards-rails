@@ -1,3 +1,13 @@
 <h2>
   <%= @flash_card.question %>
 </h2>
+
+<%= form_with local: true,
+  url: user_flash_card_compare_path(flash_card_id: @flash_card.id) do |form| %>
+  <p>
+    <%= form.label :your_answer %>
+    <%= form.text_field :your_answer %>
+  </p>
+  <%= form.submit "Compare" %>
+  <%= link_to "Back", user_flash_cards_path %>
+<% end %>
