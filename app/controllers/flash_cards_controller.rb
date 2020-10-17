@@ -1,4 +1,6 @@
 class FlashCardsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @flash_cards = FlashCard.all
   end
