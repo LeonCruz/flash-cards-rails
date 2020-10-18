@@ -1,0 +1,30 @@
+<nav class="navbar is-info mb-4" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <h2 class="is-size-4 has-text-weight-bold">Flash Cards</h2>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if user_signed_in? %>
+            <%= link_to "Create new Flash Card", new_user_flash_card_path, class: "button is-link" %>
+            <%= link_to "Log out", destroy_user_session_path, class: "button is-light",
+            method: :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, class: "button is-primary" %>
+            <%= link_to "Log in", new_user_session_path, class: "button is-light" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

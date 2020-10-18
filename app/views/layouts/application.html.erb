@@ -6,19 +6,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if notice.present? %>
-      <%= notice %>
-    <% end %>
+    <%= render "shared/header" %>
 
-    <% if alert.present? %>
-      <%= alert %>
-    <% end %>
+    <div class="container">
+      <% if notice.present? %>
+        <%= notice %>
+      <% end %>
 
-    <%= yield %>
+      <% if alert.present? %>
+        <%= alert %>
+      <% end %>
 
+      <%= yield %>
+    </div>
   </body>
 </html>

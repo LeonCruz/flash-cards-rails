@@ -1,14 +1,21 @@
-<h1>Flash Cards</h1>
-
-<%= link_to "Create new Flash Card", new_user_flash_card_path %>
-
-<p>
-  <ul>
-    <% @flash_cards.each do |card| %>
-      <li>
-        <%= link_to card.question, user_flash_card_path(current_user, card) %>
-      </li>
-    <% end %>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  </ul>
-</p>
+<div class="columns is-multiline">
+  <% @flash_cards.each do |card| %>
+    <div class="column is-one-quarter">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title"><%= card.category %></p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <%= card.question %>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <%= link_to "Show", user_flash_card_path(current_user, card), class: "card-footer-item" %>
+          <%= link_to "Edit", destroy_user_session_path, class: "card-footer-item" %>
+          <%= link_to "Delete", destroy_user_session_path, class: "card-footer-item" %>
+        </footer>
+      </div>
+    </div>
+  <% end %>
+</div>
