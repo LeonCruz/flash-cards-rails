@@ -24,6 +24,14 @@ class FlashCardsController < ApplicationController
     @flash_card = FlashCard.find(params[:id])
   end
 
+  def destroy
+    @flash_card = FlashCard.find(params[:id])
+    @flash_card.destroy
+
+    flash[:notice] = "The Flash Card was successfully destroyed"
+    redirect_to action: "index"
+  end
+
   def compare
     your_answer = params[:your_answer]
     @flash_card = FlashCard.find(params[:flash_card_id])

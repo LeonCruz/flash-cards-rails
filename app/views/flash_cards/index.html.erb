@@ -13,7 +13,11 @@
         <footer class="card-footer">
           <%= link_to "Show", user_flash_card_path(current_user, card), class: "card-footer-item" %>
           <%= link_to "Edit", destroy_user_session_path, class: "card-footer-item" %>
-          <%= link_to "Delete", destroy_user_session_path, class: "card-footer-item" %>
+          <%= link_to "Delete", user_flash_card_path(current_user, card), class: "card-footer-item", method: :delete,
+            data: {
+              confirm: 'Are you sure?'
+            }
+          %>
         </footer>
       </div>
     </div>
