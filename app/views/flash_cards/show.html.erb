@@ -1,13 +1,27 @@
-<h2>
-  <%= @flash_card.question %>
-</h2>
+<div class="columns is-centered">
+  <div class="column is-one-third">
+    <h2 class="is-size-3 mb-3">
+      <%= @flash_card.question %>
+    </h2>
 
-<%= form_with local: true,
-  url: user_flash_card_compare_path(flash_card_id: @flash_card.id) do |form| %>
-  <p>
-    <%= form.label :your_answer %>
-    <%= form.text_field :your_answer %>
-  </p>
-  <%= form.submit "Compare" %>
-  <%= link_to "Back", user_flash_cards_path %>
-<% end %>
+    <div class="field">
+      <%= form_with local: true,
+        url: user_flash_card_compare_path(flash_card_id: @flash_card.id) do |form| %>
+
+        <%= form.label :your_answer, class: "label" %>
+        <div class="control">
+          <%= form.text_field :your_answer, class: "input" %>
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+          <%= form.submit "Compare", class: "button is-primary" %>
+        </div>
+        <div class="control">
+          <%= link_to "Back", user_flash_cards_path, class: "button is-link is-light" %>
+        </div>
+    </div>
+      <% end %>
+  </div>
+</div>

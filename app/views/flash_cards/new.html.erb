@@ -1,37 +1,51 @@
-<h2>Create a new Flash Card</h2>
-<%= form_with scope: :flash_card, local: true, url: user_flash_cards_path do |form| %>
+<div class="columns is-centered">
+  <div class="column is-one-third is-full-mobile">
+    <h2 class="is-size-3 mb-3 is-size-4-mobile">Create a new Flash Card</h2>
 
-  <% if @flash_card.errors.any? %>
-    <h2>
-      <%= pluralize(@flash_card.errors.count, "error") %> prohibted
-      this article from being saved:
-    </h2>
+    <%= form_with scope: :flash_card, local: true, url: user_flash_cards_path do |form| %>
+      <% if @flash_card.errors.any? %>
+        <h2>
+          <%= pluralize(@flash_card.errors.count, "error") %> prohibted
+          this Flash Card from being saved:
+        </h2>
 
-    <ul>
-      <% @flash_card.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <ul>
+          <% @flash_card.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
 
-  <p>
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </p>
+      <div class="field">
+        <%= form.label :category, class: "label" %>
+        <div class="control">
+          <%= form.text_field :category, class: "input" %>
+        </div>
+      </div>
 
-  <p>
-    <%= form.label :question %>
-    <%= form.text_field :question %>
-  </p>
+      <div class="field">
+        <%= form.label :question, class: "label" %>
+        <div class="control">
+          <%= form.text_field :question, class: "input" %>
+        </div>
+      </div>
 
-  <p>
-    <%= form.label :answer %>
-    <%= form.text_field :answer %>
-  </p>
+      <div class="field">
+        <%= form.label :answer, class: "label" %>
+        <div class="control">
+          <%= form.text_field :answer, class: "input" %>
+        </div>
+      </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+      <div class="field is-grouped">
+        <div class="control">
+          <%= form.submit class: "button is-primary" %>
+        </div>
 
-  <%= link_to 'Back', user_flash_cards_path %>
-<% end %>
+        <div class="control">
+          <%= link_to 'Back', user_flash_cards_path, class: "button is-link is-light" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
