@@ -9,5 +9,6 @@
         <%= link_to card.question, user_flash_card_path(current_user, card) %>
       </li>
     <% end %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
   </ul>
 </p>
