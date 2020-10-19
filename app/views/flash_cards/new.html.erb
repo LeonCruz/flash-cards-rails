@@ -1,6 +1,6 @@
-<div class="columns is-centered">
-  <div class="column is-one-third is-full-mobile">
-    <h2 class="is-size-3 mb-3 is-size-4-mobile">Create a new Flash Card</h2>
+<div class="columns is-mobile is-centered">
+  <div class="column is-one-third-tablet is-four-fifths-mobile">
+    <h2 class="is-size-3 is-size-4-mobile mb-3 has-text-centered">Create a new Flash Card</h2>
 
     <%= form_with scope: :flash_card, local: true, url: user_flash_cards_path do |form| %>
       <% if @flash_card.errors.any? %>
