@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root "home#index"
-  devise_for :users, path: "accounts"
+
+  devise_for :users, path: "accounts", controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
 
   resources :users do
     resources :flash_cards do
