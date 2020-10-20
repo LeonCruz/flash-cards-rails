@@ -1,0 +1,54 @@
+<div class="columns is-mobile is-centered">
+  <div class="column is-one-third-tablet is-four-fifths-mobile">
+    <h2 class="is-size-3 is-size-4-mobile has-text-centered">
+      Edit Flash Card
+    </h2>
+
+    <%= form_with scope: :flash_card, local: true, url: user_flash_card_path, method: "put" do |form| %>
+
+      <% if @flash_card.errors.any? %>
+        <h2>
+          <%= pluralize(@flash_card.errors.count, "error") %> prohibted
+          this Flash Card from being saved:
+        </h2>
+
+        <ul>
+          <% @flash_card.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :category, class: "label" %>
+        <div class="control">
+          <%= form.text_field :category, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :question, class: "label" %>
+        <div class="control">
+          <%= form.text_field :question, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :answer, class: "label" %>
+        <div class="control">
+          <%= form.text_field :answer, class: "input" %>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= form.submit "Edit Flash Card", class: "button is-primary" %>
+        </div>
+
+        <div class="control">
+          <%= link_to 'Back', user_flash_cards_path, class: "button is-link is-light" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

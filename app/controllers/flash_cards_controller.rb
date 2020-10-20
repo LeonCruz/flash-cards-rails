@@ -24,6 +24,21 @@ class FlashCardsController < ApplicationController
     @flash_card = FlashCard.find(params[:id])
   end
 
+  def edit
+    @flash_card = FlashCard.find(params[:id])
+  end
+
+  def update
+    @flash_card = FlashCard.find(params[:id])
+
+    if @flash_card.update(flash_card_params)
+      flash[:notice] = "Atualizado com sucesso"
+      redirect_to action: "index"
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @flash_card = FlashCard.find(params[:id])
     @flash_card.destroy

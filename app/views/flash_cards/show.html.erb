@@ -5,8 +5,7 @@
     </h2>
 
     <div class="field">
-      <%= form_with local: true,
-        url: user_flash_card_compare_path(flash_card_id: @flash_card.id) do |form| %>
+      <%= form_with local: true, url: user_flash_card_compare_path(flash_card_id: @flash_card.id) do |form| %>
 
         <%= form.label :your_answer, class: "label" %>
         <div class="control">
