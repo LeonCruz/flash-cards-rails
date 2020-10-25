@@ -6,6 +6,7 @@
 #
 
 user1:
+  id: 1
   email: user1@email.com
   encrypted_password: user1password
 
