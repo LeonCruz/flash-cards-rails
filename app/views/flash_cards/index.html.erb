@@ -1,25 +1,29 @@
 <div class="columns is-mobile is-centered is-multiline">
-  <% @flash_cards.each do |card| %>
-    <div class="column is-one-quarter-tablet is-four-fifths-mobile">
-      <div class="card">
-        <header class="card-header">
-          <p class="card-header-title"><%= card.category %></p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-            <%= card.question %>
+  <% if @flash_cards.empty? %>
+    <h2 class="is-size-3">Você não possui nenhum Flash Card</h2>
+  <% else %>
+    <% @flash_cards.each do |card| %>
+      <div class="column is-one-quarter-tablet is-four-fifths-mobile">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title"><%= card.category %></p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <%= card.question %>
+            </div>
           </div>
+          <footer class="card-footer">
+            <%= link_to "Show", user_flash_card_path(current_user, card), method: :get, class: "card-footer-item" %>
+            <%= link_to "Edit", edit_user_flash_card_path(current_user, card), class: "card-footer-item" %>
+            <%= link_to "Delete", user_flash_card_path(current_user, card), class: "card-footer-item", method: :delete,
+              data: {
+                confirm: 'Are you sure?'
+              }
+            %>
+          </footer>
         </div>
-        <footer class="card-footer">
-          <%= link_to "Show", user_flash_card_path(current_user, card), method: :get, class: "card-footer-item" %>
-          <%= link_to "Edit", edit_user_flash_card_path(current_user, card), class: "card-footer-item" %>
-          <%= link_to "Delete", user_flash_card_path(current_user, card), class: "card-footer-item", method: :delete,
-            data: {
-              confirm: 'Are you sure?'
-            }
-          %>
-        </footer>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
