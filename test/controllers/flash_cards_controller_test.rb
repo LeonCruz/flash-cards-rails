@@ -52,4 +52,30 @@ class FlashCardsControllerTest < ActionDispatch::IntegrationTest
     assert_equal pergunta, FlashCard.find(flash_cards(:card1).id).question
     assert_equal resposta, FlashCard.find(flash_cards(:card1).id).answer
   end
+
+  test 'comparar uma resposta certa' do
+    user = users :user1
+    flash_card = flash_cards :card1
+
+    post user_flash_card_compare_path(flash_card_id: flash_card.id, user_id: user.id), params: {
+      your_answer: 'resposta'
+    }
+
+    get user_flash_cards_path
+
+    assert_equal 'Você acertou', flash[:notice]
+  end
+
+  test 'comparar uma resposta errada' do
+    user = users :user1
+    flash_card = flash_cards :card1
+
+    post user_flash_card_compare_path(flash_card_id: flash_card.id, user_id: user.id), params: {
+      your_answer: 'resposta errada'
+    }
+
+    get user_flash_cards_path
+
+    assert_equal 'Você errou', flash[:notice]
+  end
 end
